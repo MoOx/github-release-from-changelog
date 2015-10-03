@@ -2,6 +2,8 @@
 
 > Create GitHub releases from CHANGELOG.md
 
+**Works great with [npmpub(lish)](https://github.com/MoOx/npmpublish).**
+
 You need:
 
 - a CHANGELOG with the following format:
@@ -16,8 +18,6 @@ You need:
 
 This plugin edit the git tag on GitHub and create a GitHub release with the
 correct CHANGELOG.md section.
-
-**Works great with [npmpublish](https://github.com/MoOx/npmpublish).**
 
 ## Install
 
