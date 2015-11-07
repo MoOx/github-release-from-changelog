@@ -5,7 +5,7 @@
  *
  * Usage:
  *   $ GITHUB_TOKEN=aGitHubToken
- *   $ npmrelease
+ *   $ github-release-from-changelog [--filename CustomChangelog.md]
  *
  * we will use `grizzly` (https://github.com/coderaiser/node-grizzly)
  * so we need
@@ -21,6 +21,13 @@ if (!token) {
   throw "GITHUB_TOKEN required"
 }
 
+// read command line arguments
+var minimist = require('minimist');
+var argv = minimist(process.argv.slice(2));
+
+// changelog file name
+var changelogFileName = argv.filename || "CHANGELOG.md";
+
 // get dep
 var release = require("grizzly")
 
@@ -34,9 +41,9 @@ catch(e) {throw "No package.json found in " + process.cwd()}
 // read changelog
 var changelog
 try {
-  changelog = require("fs").readFileSync(process.cwd() + "/CHANGELOG.md", {encoding: "utf8"})
+  changelog = require("fs").readFileSync(process.cwd() + "/" + changelogFileName, {encoding: "utf8"})
 }
-catch(e) {throw "No CHANGELOG.md found in " + process.cwd()}
+catch(e) {throw "No " + changelogFileName + " found in " + process.cwd()}
 
 // parse repository url to get owner & repo slug
 var repoUrl

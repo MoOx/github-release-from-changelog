@@ -28,7 +28,7 @@ $ npm install github-release-from-changelog
 ## Usage
 
 ```console
-$ github-release-from-changelog
+$ github-release-from-changelog [--filename CustomChangelog.md]
 ```
 
 ---
