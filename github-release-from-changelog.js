@@ -79,7 +79,7 @@ changelog.split("\n").some(function(line, i) {
     return true
   }
   // between start & end, collect lines
-  else if (start && line !== "") {
+  else if (start) {
     body.push(line)
   }
 })
