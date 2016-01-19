@@ -23,7 +23,7 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "npmpub": "^1.0.0"
+    "npmpub": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"I use myself\"",
