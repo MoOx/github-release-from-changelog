@@ -23,10 +23,10 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "npmpub": "^2.0.0"
+    "npmpub": "^3.0.1"
   },
   "scripts": {
     "test": "echo \"I use myself\"",
-    "release": "npmpublish && ./github-release-from-changelog.js"
+    "release": "npmpublish --no-release && ./github-release-from-changelog.js"
   }
 }

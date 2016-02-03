@@ -2,7 +2,9 @@
 
 > Create GitHub releases from CHANGELOG.md
 
-**Works great with [npmpub(lish)](https://github.com/MoOx/npmpublish).**
+**Included in [npmpub(lish)](https://github.com/MoOx/npmpub) !.**
+
+---
 
 You need:
 
