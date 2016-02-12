@@ -1,3 +1,7 @@
+# 1.1.3 - 2016-02-12
+
+- Fixed: `chmod +x ./github-release-from-changelog.js`
+
 # 1.1.2 - 2016-02-12
 
 - Fixed: tag starting with "v" are now compatible.
