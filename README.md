@@ -15,7 +15,7 @@ You need:
 ...
 ```
 - a `package.json` with a `version` field
-- a git tag with the corresponding version
+- a git tag with the corresponding version in either `X.Y.Z` or `vX.Y.Z` formats
 - a `GITHUB_TOKEN` as an env var
 
 This plugin edit the git tag on GitHub and create a GitHub release with the
