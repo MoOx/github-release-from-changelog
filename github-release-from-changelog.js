@@ -22,6 +22,7 @@ if (!token) {
 }
 
 // read command line arguments
+var cp = require('child_process');
 var minimist = require('minimist');
 var argv = minimist(process.argv.slice(2));
 
@@ -62,19 +63,29 @@ var repoData = matches[1].split("/")
 var owner = repoData[0]
 var repo = repoData[1].replace(/\.git$/, "")
 
-// tag
-var tagName = pkg.version
+// version
+var version = pkg.version
+
+// Look for the tag in either X.Y.Z or vX.Y.X formats
+var tags = cp.execSync("git tag", {encoding: 'utf8'})
+var tagMatches = tags.match(new RegExp("^(v?)" + version + "$", "gm"))
+var tagName
+if (tagMatches === null) {
+  throw "Tag " + version + " or v" + version + " not found"
+} else {
+  tagName = tagMatches[0]
+}
 
 // changelog
 var body = []
 var start
-// read from # tagName to the next # .*
+// read from # version to the next # .*
 changelog.split("\n").some(function(line, i) {
-  // start with the tagName
-  if (!start && line.indexOf("# " + tagName) === 0) {
+  // start with the # version
+  if (!start && line.indexOf("# " + version) === 0) {
     start = true
   }
-  // end with another tagName
+  // end with another # version
   else if (start && line.indexOf("# ") === 0) {
     return true
   }
