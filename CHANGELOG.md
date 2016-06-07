@@ -1,3 +1,9 @@
+# 1.1.4 - 2016-06-07
+
+- Fixed: ``TypeError: Cannot read property 'createRelease' of undefined``
+  by fixing ``grizzly`` version.
+  ([#12](https://github.com/MoOx/npmpub/issues/12))
+
 # 1.1.3 - 2016-02-12
 
 - Fixed: `chmod +x ./github-release-from-changelog.js`

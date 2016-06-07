@@ -1,6 +1,6 @@
 {
   "name": "github-release-from-changelog",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Create GitHub releases from CHANGELOG.md",
   "keywords": [
     "cli-app",
@@ -19,7 +19,7 @@
     "github-release-from-changelog": "github-release-from-changelog.js"
   },
   "dependencies": {
-    "grizzly": "^1.0.14",
+    "grizzly": "1.0.16",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
