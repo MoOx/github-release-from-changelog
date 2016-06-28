@@ -1,3 +1,4 @@
+# 1.2.0 - 2016-06-28
 
 - Changed: use ``grizzly`` v2.x
   (ref [node-grizzly#1](https://github.com/coderaiser/node-grizzly/issues/1))
