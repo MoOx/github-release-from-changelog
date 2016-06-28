@@ -27,6 +27,7 @@
   },
   "scripts": {
     "test": "echo \"I use myself\"",
-    "release": "npmpub --no-release && ./github-release-from-changelog.js"
+    "release": "npmpub --no-release",
+    "postrelease": "./github-release-from-changelog.js"
   }
 }
