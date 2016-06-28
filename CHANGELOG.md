@@ -1,3 +1,7 @@
+
+- Changed: use ``grizzly`` v2.x
+  (ref [node-grizzly#1](https://github.com/coderaiser/node-grizzly/issues/1))
+
 # 1.1.4 - 2016-06-07
 
 - Fixed: ``TypeError: Cannot read property 'createRelease' of undefined``

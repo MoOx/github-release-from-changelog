@@ -19,7 +19,7 @@
     "github-release-from-changelog": "github-release-from-changelog.js"
   },
   "dependencies": {
-    "grizzly": "1.0.16",
+    "grizzly": "^2.0.0",
     "minimist": "^1.2.0"
   },
   "devDependencies": {

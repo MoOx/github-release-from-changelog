@@ -9,8 +9,8 @@
  *
  * we will use `grizzly` (https://github.com/coderaiser/node-grizzly)
  * so we need
- * - owner (user from package.json repo field)
- * - repo (same as)owner
+ * - user (user from package.json repo field)
+ * - repo (same as)user
  * - tag (version)
  * - release name (tag)
  * - description (changelog section corresponding to tag)
@@ -46,7 +46,7 @@ try {
 }
 catch(e) {throw "No " + changelogFileName + " found in " + process.cwd()}
 
-// parse repository url to get owner & repo slug
+// parse repository url to get user & repo slug
 var repoUrl
 repoUrl = pkg.repository
 if (repoUrl === undefined) {
@@ -60,7 +60,7 @@ if (matches === null) {
   throw "Unable to parse repository url"
 }
 var repoData = matches[1].split("/")
-var owner = repoData[0]
+var user = repoData[0]
 var repo = repoData[1].replace(/\.git$/, "")
 
 // version
@@ -98,7 +98,7 @@ body = body.join("\n")
 
 // prepare release data
 var releaseOptions = {
-  owner: owner,
+  user: user,
   repo: repo,
   tag_name: tagName,
   name: tagName,
@@ -111,5 +111,5 @@ release(token, releaseOptions, function(err) {
   if (err) {
     throw err
   }
-  console.log(owner + " / " + repo + " " + tagName + " released")
+  console.log(user + "/" + repo + " " + tagName + " released")
 })
