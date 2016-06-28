@@ -100,7 +100,7 @@ body = body.join("\n")
 var releaseOptions = {
   user: user,
   repo: repo,
-  tag_name: tagName,
+  tag: tagName,
   name: tagName,
   body: body
 }

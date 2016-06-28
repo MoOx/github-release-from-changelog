@@ -1,3 +1,6 @@
+
+- Fixed: ``Empty value for parameter 'tag_name': undefined``
+
 # 1.2.0 - 2016-06-28
 
 - Changed: use ``grizzly`` v2.x
