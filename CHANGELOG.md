@@ -1,3 +1,4 @@
+# 1.2.1 - 2016-06-28
 
 - Fixed: ``Empty value for parameter 'tag_name': undefined``
 
