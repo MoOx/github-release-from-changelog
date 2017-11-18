@@ -79,14 +79,19 @@ if (tagMatches === null) {
 // changelog
 var body = []
 var start
+var changelogLines = changelog.split("\n");
+// determine whether the log format of http://keepachangelog.com/en/1.0.0/: check the first line and check if there is a second level heading linking to the version diff
+const isKeepAChangelogFormat = (changelogLines[0] === "# Changelog") && (changelog.indexOf("\n## [" + version + "]") !== -1)
+// console.log(isKeepAChangelogFormat);
+
 // read from # version to the next # .*
-changelog.split("\n").some(function(line, i) {
+changelogLines.some(function(line, i) {
   // start with the # version
-  if (!start && line.indexOf("# " + version) === 0) {
+  if (!start && ((line.indexOf("# " + version) === 0) || (isKeepAChangelogFormat && line.indexOf("## [") === 0))) {
     start = true
   }
   // end with another # version
-  else if (start && line.indexOf("# ") === 0) {
+  else if (start && (line.indexOf("# ") === 0 || (isKeepAChangelogFormat && line.indexOf("## [") === 0))) {
     return true
   }
   // between start & end, collect lines
@@ -94,7 +99,7 @@ changelog.split("\n").some(function(line, i) {
     body.push(line)
   }
 })
-body = body.join("\n")
+body = body.join("\n").trim()
 
 // prepare release data
 var releaseOptions = {
