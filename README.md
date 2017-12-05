@@ -10,7 +10,7 @@
 
 You need:
 
-- a CHANGELOG with the following format:
+- a CHANGELOG following the format of [keep a changelog](http://keepachangelog.com/en/1.0.0/) or a CHANGELOG with the following format:
 ```md
 # X.Y.Z - ...
 
