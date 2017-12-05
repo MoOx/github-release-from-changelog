@@ -79,7 +79,7 @@ if (tagMatches === null) {
 // changelog
 var body = []
 var start
-var changelogLines = changelog.split("\n");
+const changelogLines = changelog.replace(/\r\n/g, "\n").split("\n")
 // determine whether the log format of http://keepachangelog.com/en/1.0.0/: check the first line and check if there is a second level heading linking to the version diff
 const isKeepAChangelogFormat = (changelogLines[0] === "# Changelog") && (changelog.indexOf("\n## [" + version + "]") !== -1)
 // console.log(isKeepAChangelogFormat);
