@@ -1,3 +1,10 @@
+# 1.3.0 - 2017-12-06
+
+* [Add support for auto-determing different CHANGELOG filenames](https://github.com/MoOx/github-release-from-changelog/commit/eb8f20855810201561144ca3762168d1da421d12),
+  by @koppor, reported by @MoOx (in [#6](https://github.com/MoOx/github-release-from-changelog/issues/6))
+* [Add support for format of "Keep a Changelog"](https://github.com/MoOx/github-release-from-changelog/commit/cf50e4e8f0829c36eb837974e189d733fdb0effd),
+  by @koppor
+
 # 1.2.1 - 2016-06-28
 
 * Fixed: `Empty value for parameter 'tag_name': undefined`

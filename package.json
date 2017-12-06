@@ -1,6 +1,6 @@
 {
   "name": "github-release-from-changelog",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Create GitHub releases from CHANGELOG.md",
   "keywords": [
     "cli-app",
@@ -10,7 +10,10 @@
     "git",
     "push",
     "github",
-    "release"
+    "release",
+    "release notes",
+    "changelog",
+    "history"
   ],
   "author": "Maxime Thirouin",
   "license": "MIT",
