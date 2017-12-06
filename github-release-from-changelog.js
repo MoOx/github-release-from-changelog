@@ -26,8 +26,26 @@ var cp = require('child_process');
 var minimist = require('minimist');
 var argv = minimist(process.argv.slice(2));
 
+var fs = require("fs")
+
 // changelog file name
-var changelogFileName = argv.filename || "CHANGELOG.md";
+var changelogFileName = argv.filename;
+if (!changelogFileName) {
+  const changelogFileNames = [
+      "CHANGELOG.md", "Changelog.md", "changelog.md",
+      "CHANGES.md", "Changes.md", "changes.md",
+      "HISTORY.md", "History.md", "history.md",
+      "NEWS.md", "News.md", "news.md",
+      "RELEASES.md", "Releases.md", "releases.md"
+  ];
+  for (var fileName of changelogFileNames) {
+      if (fs.existsSync(fileName)) {
+          changelogFileName = fileName;
+          break;
+      }
+  }
+}
+// console.log("changelog filename", changelogFileName);
 
 // get dep
 var release = require("grizzly")
@@ -42,7 +60,7 @@ catch(e) {throw "No package.json found in " + process.cwd()}
 // read changelog
 var changelog
 try {
-  changelog = require("fs").readFileSync(process.cwd() + "/" + changelogFileName, {encoding: "utf8"})
+  changelog = fs.readFileSync(process.cwd() + "/" + changelogFileName, {encoding: "utf8"})
 }
 catch(e) {throw "No " + changelogFileName + " found in " + process.cwd()}
 
