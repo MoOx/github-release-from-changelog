@@ -23,11 +23,19 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "npmpub": "^3.0.1"
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "npmpub": "^3.0.1",
+    "prettier": "^1.9.1"
   },
   "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier --write \"**/*.{js,json,css,md}\"",
     "test": "echo \"I use myself\"",
     "release": "npmpub --no-release",
     "postrelease": "./github-release-from-changelog.js"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   }
 }
