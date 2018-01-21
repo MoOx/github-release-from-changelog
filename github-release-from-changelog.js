@@ -132,9 +132,10 @@ changelogLines.some(function(line, i) {
   } else if (
     start &&
     (line.indexOf("# ") === 0 ||
-      (isKeepAChangelogFormat && line.indexOf("## [") === 0))
+      (isKeepAChangelogFormat && line.indexOf("## [") === 0) ||
+      (line.indexOf("[") === 0))
   ) {
-    // end with another # version
+    // end with another # version or a footer link
     return true;
   } else if (start) {
     // between start & end, collect lines
