@@ -126,7 +126,7 @@ changelogLines.some(function(line, i) {
   if (
     !start &&
     (line.indexOf("# " + version) === 0 ||
-      (isKeepAChangelogFormat && line.indexOf("## [") === 0))
+      (isKeepAChangelogFormat && line.indexOf("## [" + version) === 0))
   ) {
     start = true;
   } else if (
