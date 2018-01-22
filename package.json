@@ -1,6 +1,6 @@
 {
   "name": "github-release-from-changelog",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Create GitHub releases from CHANGELOG.md",
   "keywords": [
     "cli-app",

@@ -1,3 +1,8 @@
+# 1.3.1 - 2018-01-22
+
+* [Fix "Keep A Changelog" version detection](https://github.com/MoOx/github-release-from-changelog/commit/b96ea68110ee580abd31fbcc028c92091c03682d)
+  by @igetgames
+
 # 1.3.0 - 2017-12-06
 
 * [Add support for auto-determing different CHANGELOG filenames](https://github.com/MoOx/github-release-from-changelog/commit/eb8f20855810201561144ca3762168d1da421d12),
