@@ -1,3 +1,7 @@
+# 1.3.2 - 2018-06-07
+
+* [Upgrade of grizzly to prevent security issue](https://github.com/MoOx/github-release-from-changelog/commit/9634bf8e1fa9ce9f693277bfed24bb83ead5a9e8) by @ntwb
+
 # 1.3.1 - 2018-01-22
 
 * [Fix "Keep A Changelog" version detection](https://github.com/MoOx/github-release-from-changelog/commit/b96ea68110ee580abd31fbcc028c92091c03682d)
