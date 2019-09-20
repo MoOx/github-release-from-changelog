@@ -149,6 +149,9 @@ var releaseOptions = {
   body: body
 };
 
+var githubReleaseUrl =
+  "https://github.com/" + user + "/" + repo + "/releases/tag/" + tagName;
+
 if (argv.dryRun) {
   console.log(tagName);
   console.log();
@@ -156,7 +159,8 @@ if (argv.dryRun) {
   console.log(body);
   console.log("---");
   console.log();
-  console.log(user + "/" + repo + " " + tagName + " NOT released");
+  console.log("NOT released, link below should not have the release notes");
+  console.log(githubReleaseUrl);
 } else {
   var token = process.env.GITHUB_TOKEN;
   if (!token) {
@@ -167,6 +171,6 @@ if (argv.dryRun) {
     if (err) {
       throw err;
     }
-    console.log(user + "/" + repo + " " + tagName + " released");
+    console.log(githubReleaseUrl);
   });
 }
