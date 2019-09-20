@@ -120,15 +120,18 @@ var changelogLines = changelog.replace(/\r\n/g, "\n").split("\n");
 // # 1.0
 // ## v1.0
 // ## [v1.0
-var versionStartStringRe = "##? [?v?";
+var versionStartStringRe = "##? \\[?v?";
 var versionStartRe = new RegExp(versionStartStringRe);
 var versionRe = new RegExp(versionStartStringRe + version.replace(/\./, "."));
-var footerLinkRe = new RegExp("$[");
+var footerLinkRe = new RegExp("$\\[");
 
 changelogLines.some(function(line, i) {
   if (!start && line.match(versionRe)) {
     start = true;
-  } else if (start && (line.match(endRe) || line.match(footerLinkRe))) {
+  } else if (
+    start &&
+    (line.match(versionStartRe) || line.match(footerLinkRe))
+  ) {
     return true;
   } else if (start) {
     // between start & end, collect lines
