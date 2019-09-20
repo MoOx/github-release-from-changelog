@@ -28,6 +28,20 @@ npm install github-release-from-changelog
 github-release-from-changelog [--filename CustomChangelog.md]
 ```
 
+### Options
+
+#### `--filename`
+
+Specify your own filename
+
+#### `--dryRun`
+
+Test what the release will looks like
+
+#### `--debug`
+
+Display parsing information
+
 ## Advanced Installation and Usage
 
 github-release-from-changelog is fully integrated in [npmpub](https://github.com/MoOx/npmpub).
