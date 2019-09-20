@@ -1,6 +1,7 @@
 # github-release-from-changelog
 
-[![NPM version](https://img.shields.io/npm/v/github-release-from-changelog.svg?style=flat)](https://www.npmjs.com/package/github-release-from-changelog)
+[![Build Status](https://github.com/MoOx/github-release-from-changelog/workflows/Build/badge.svg)](https://github.com/MoOx/github-release-from-changelog/actions)
+[![Version](https://img.shields.io/npm/v/github-release-from-changelog.svg?style=flat)](https://www.npmjs.com/package/github-release-from-changelog)
 
 > Create GitHub releases from `CHANGELOG.md`
 
