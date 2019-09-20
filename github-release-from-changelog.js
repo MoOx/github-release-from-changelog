@@ -1,5 +1,23 @@
 #!/usr/bin/env node
 
+var changelogFileNames = [
+  "CHANGELOG.md",
+  "Changelog.md",
+  "changelog.md",
+  "CHANGES.md",
+  "Changes.md",
+  "changes.md",
+  "HISTORY.md",
+  "History.md",
+  "history.md",
+  "NEWS.md",
+  "News.md",
+  "news.md",
+  "RELEASES.md",
+  "Releases.md",
+  "releases.md"
+];
+
 /**
  * GitHub release from an package.json + CHANGELOG
  *
@@ -31,23 +49,6 @@ var fs = require("fs");
 // changelog file name
 var changelogFileName = argv.filename;
 if (!changelogFileName) {
-  const changelogFileNames = [
-    "CHANGELOG.md",
-    "Changelog.md",
-    "changelog.md",
-    "CHANGES.md",
-    "Changes.md",
-    "changes.md",
-    "HISTORY.md",
-    "History.md",
-    "history.md",
-    "NEWS.md",
-    "News.md",
-    "news.md",
-    "RELEASES.md",
-    "Releases.md",
-    "releases.md"
-  ];
   for (var fileName of changelogFileNames) {
     if (fs.existsSync(fileName)) {
       changelogFileName = fileName;
