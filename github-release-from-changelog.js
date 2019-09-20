@@ -118,7 +118,7 @@ var changelogLines = changelog.replace(/\r\n/g, "\n").split("\n");
 var versionStartStringRe = "^##? \\[?v?";
 var versionStartRe = new RegExp(versionStartStringRe);
 var versionRe = new RegExp(versionStartStringRe + version.replace(/\./, "."));
-var footerLinkRe = new RegExp("$\\[");
+var footerLinkRe = new RegExp("^\\[");
 
 changelogLines.some(function(line, i) {
   argv.debug && console.log("MATCH", line.match(versionRe));
