@@ -34,11 +34,6 @@ var changelogFileNames = [
  * - description (changelog section corresponding to tag)
  */
 
-var token = process.env.GITHUB_TOKEN;
-if (!token) {
-  throw "GITHUB_TOKEN required";
-}
-
 // read command line arguments
 var cp = require("child_process");
 var minimist = require("minimist");
@@ -158,6 +153,11 @@ if (argv.dryRun) {
   console.log();
   console.log(user + "/" + repo + " " + tagName + " NOT released");
 } else {
+  var token = process.env.GITHUB_TOKEN;
+  if (!token) {
+    throw "GITHUB_TOKEN required";
+  }
+
   release(token, releaseOptions, function(err) {
     if (err) {
       throw err;
