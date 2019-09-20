@@ -1,5 +1,10 @@
 # `github-release-from-changelog` Changelog
 
+## 2.1.0 - 2019-09-20
+
+- 😂 Fix a specific bug if a line contain a version similar to supported markdown title
+- 🎉 We now show a direct link to the release
+
 ## 2.0.0 - 2019-09-20
 
 🥳 Less contraints!
