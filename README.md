@@ -1,6 +1,6 @@
 # github-release-from-changelog
 
-[![Build Status](https://github.com/MoOx/github-release-from-changelog/workflows/Build/badge.svg)](https://github.com/MoOx/github-release-from-changelog/actions)
+[![Test Status](https://github.com/MoOx/github-release-from-changelog/workflows/Test/badge.svg)](https://github.com/MoOx/github-release-from-changelog/actions)
 [![Version](https://img.shields.io/npm/v/github-release-from-changelog.svg?style=flat)](https://www.npmjs.com/package/github-release-from-changelog)
 
 > Create GitHub releases from `CHANGELOG.md`
@@ -9,10 +9,10 @@
 
 You need:
 
-* a changelog file ([various filenames supported](https://github.com/MoOx/github-release-from-changelog/blob/master/github-release-from-changelog.js) automatically or specified via `--filename` option) with markdown titles that start with the version (eg: `# 1.2.0`, `## v1.2.0`, `# [1.2.0`...)
-* a `package.json` with a `version` field.
-* a git tag with the corresponding version in either `X.Y.Z` or `vX.Y.Z` formats.
-* a `GITHUB_TOKEN` as an env var. See <https://github.com/MoOx/npmpub#requirements> for instructions.
+- a changelog file ([various filenames supported](https://github.com/MoOx/github-release-from-changelog/blob/master/github-release-from-changelog.js) automatically or specified via `--filename` option) with markdown titles that start with the version (eg: `# 1.2.0`, `## v1.2.0`, `# [1.2.0`...)
+- a `package.json` with a `version` field.
+- a git tag with the corresponding version in either `X.Y.Z` or `vX.Y.Z` formats.
+- a `GITHUB_TOKEN` as an env var. See <https://github.com/MoOx/npmpub#requirements> for instructions.
 
 _Included in [npmpub](https://github.com/MoOx/npmpub) !._
 
@@ -39,8 +39,8 @@ One can create a release using release-it (which also updates `package.json`, bu
 
 ## CONTRIBUTING
 
-* ⇄ Pull requests and ★ Stars are always welcome.
-* For bugs and feature requests, please create an issue.
+- ⇄ Pull requests and ★ Stars are always welcome.
+- For bugs and feature requests, please create an issue.
 
 ## CHANGELOG
 
