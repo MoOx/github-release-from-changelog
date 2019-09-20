@@ -33,7 +33,7 @@
   },
   "scripts": {
     "precommit": "pretty-quick --staged",
-    "test": "echo \"I use myself\"",
+    "test": "./github-release-from-changelog.js --dryRun",
     "release": "npmpub --no-release",
     "postrelease": "./github-release-from-changelog.js"
   }
