@@ -115,7 +115,7 @@ var changelogLines = changelog.replace(/\r\n/g, "\n").split("\n");
 // # 1.0
 // ## v1.0
 // ## [v1.0
-var versionStartStringRe = "##? \\[?v?";
+var versionStartStringRe = "^##? \\[?v?";
 var versionStartRe = new RegExp(versionStartStringRe);
 var versionRe = new RegExp(versionStartStringRe + version.replace(/\./, "."));
 var footerLinkRe = new RegExp("$\\[");
