@@ -4,23 +4,16 @@
 
 > Create GitHub releases from `CHANGELOG.md`
 
-**Included in [npmpub(lish)] !.**
+**This tool _edits the git tag_ on GitHub and _create a GitHub release_ with the correct changelog section.**
 
 You need:
 
-* a CHANGELOG following the format of [keep a changelog](http://keepachangelog.com/en/1.0.0/) or a CHANGELOG with the following format:
-
-```md
-# X.Y.Z - ...
-
-...
-```
-
+* a changelog file ([various filenames supported](https://github.com/MoOx/github-release-from-changelog/blob/master/github-release-from-changelog.js) automatically or specified via `--filename` option) with markdown titles that start with the version (eg: `# 1.2.0`, `## v1.2.0`, `# [1.2.0`...)
 * a `package.json` with a `version` field.
 * a git tag with the corresponding version in either `X.Y.Z` or `vX.Y.Z` formats.
 * a `GITHUB_TOKEN` as an env var. See <https://github.com/MoOx/npmpub#requirements> for instructions.
 
-This tool edits the git tag on GitHub and create a GitHub release with the correct `CHANGELOG.md` section.
+_Included in [npmpub](https://github.com/MoOx/npmpub) !._
 
 ## Install
 
@@ -36,9 +29,9 @@ github-release-from-changelog [--filename CustomChangelog.md]
 
 ## Advanced Installation and Usage
 
-github-release-from-changelog is fully integrated in [npmpub(lish)].
+github-release-from-changelog is fully integrated in [npmpub](https://github.com/MoOx/npmpub).
 Please follow the instructions at <https://github.com/MoOx/npmpub#install> to install and use it.
-npmpub(lish) automatically calls github-release-from-changelog by default.
+npmpub automatically calls github-release-from-changelog by default.
 
 github-release-from-changelog also plays well with other publishing tools such as [release-it](https://www.npmjs.com/package/release-it).
 One can create a release using release-it (which also updates `package.json`, but does not free you from maintaining `CHANGELOG.md` for yourself) and then use github-release-from-changelog to create the release on GitHub.
@@ -56,5 +49,3 @@ See [CHANGELOG.md](CHANGELOG.md)
 
 The license is MIT.
 See [LICENSE](LICENSE).
-
-[npmpub(lish)]: https://github.com/MoOx/npmpub
