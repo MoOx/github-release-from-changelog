@@ -121,17 +121,22 @@ var versionRe = new RegExp(versionStartStringRe + version.replace(/\./, "."));
 var footerLinkRe = new RegExp("$\\[");
 
 changelogLines.some(function(line, i) {
+  argv.debug && console.log("MATCH", line.match(versionRe));
   if (!start && line.match(versionRe)) {
     start = true;
+    argv.debug && console.log("START");
   } else if (
     start &&
     (line.match(versionStartRe) || line.match(footerLinkRe))
   ) {
+    argv.debug && console.log("END");
     return true;
   } else if (start) {
+    argv.debug && console.log(line);
     // between start & end, collect lines
     body.push(line);
   }
+  argv.debug && console.log("IGNORED " + line);
 });
 body = body.join("\n").trim();
 
