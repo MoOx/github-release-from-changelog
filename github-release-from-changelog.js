@@ -113,30 +113,22 @@ if (tagMatches === null) {
 
 // changelog
 var body = [];
-var start;
-const changelogLines = changelog.replace(/\r\n/g, "\n").split("\n");
-// determine whether the log format of http://keepachangelog.com/en/1.0.0/: check the first line and check if there is a second level heading linking to the version diff
-const isKeepAChangelogFormat =
-  changelogLines[0] === "# Changelog" &&
-  changelog.indexOf("\n## [" + version + "]") !== -1;
-// console.log(isKeepAChangelogFormat);
+var start = false;
+var changelogLines = changelog.replace(/\r\n/g, "\n").split("\n");
 
-// read from # version to the next # .*
+// accept various ways to specify version starting like
+// # 1.0
+// ## v1.0
+// ## [v1.0
+var versionStartStringRe = "##? [?v?";
+var versionStartRe = new RegExp(versionStartStringRe);
+var versionRe = new RegExp(versionStartStringRe + version.replace(/\./, "."));
+var footerLinkRe = new RegExp("$[");
+
 changelogLines.some(function(line, i) {
-  // start with the # version
-  if (
-    !start &&
-    (line.indexOf("# " + version) === 0 ||
-      (isKeepAChangelogFormat && line.indexOf("## [" + version) === 0))
-  ) {
+  if (!start && line.match(versionRe)) {
     start = true;
-  } else if (
-    start &&
-    (line.indexOf("# ") === 0 ||
-      (isKeepAChangelogFormat && line.indexOf("## [") === 0) ||
-      (line.indexOf("[") === 0))
-  ) {
-    // end with another # version or a footer link
+  } else if (start && (line.match(endRe) || line.match(footerLinkRe))) {
     return true;
   } else if (start) {
     // between start & end, collect lines
