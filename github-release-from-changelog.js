@@ -146,11 +146,19 @@ var releaseOptions = {
   body: body
 };
 
-// console.log("About to release ", releaseOptions)
-
-release(token, releaseOptions, function(err) {
-  if (err) {
-    throw err;
-  }
-  console.log(user + "/" + repo + " " + tagName + " released");
-});
+if (argv.dryRun) {
+  console.log(tagName);
+  console.log();
+  console.log("---");
+  console.log(body);
+  console.log("---");
+  console.log();
+  console.log(user + "/" + repo + " " + tagName + " NOT released");
+} else {
+  release(token, releaseOptions, function(err) {
+    if (err) {
+      throw err;
+    }
+    console.log(user + "/" + repo + " " + tagName + " released");
+  });
+}
