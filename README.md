@@ -14,7 +14,7 @@ You need:
 - a git tag with the corresponding version in either `X.Y.Z` or `vX.Y.Z` formats.
 - a `GITHUB_TOKEN` as an env var. See <https://github.com/MoOx/npmpub#requirements> for instructions.
 
-_Included in [npmpub](https://github.com/MoOx/npmpub) !._
+_Included in [npmpub](https://github.com/MoOx/npmpub) !_
 
 ## Install
 
