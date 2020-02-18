@@ -1,5 +1,10 @@
 # `github-release-from-changelog` Changelog
 
+## 2.1.1 - 2020-02-18
+
+- Bump dependency triggering warning  
+  `[GitHub API] Deprecation notice for authentication via URL query parameters`
+
 ## 2.1.0 - 2019-09-20
 
 - 😂 Fix a specific bug if a line contain a version similar to supported markdown title
