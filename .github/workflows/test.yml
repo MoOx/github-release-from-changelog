@@ -1,32 +1,25 @@
-name: Test
+name: Build
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version:
-          - 8.x
-          - 10.x
-          - 12.x
-
-    name: Test on Node.js ${{ matrix.node-version }}
-
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install
-        run: |
-          yarn install \
-            --non-interactive \
-            --frozen-lockfile
-      - name: Test
-        run: yarn test
-        env:
-          CI: true
+          node-version-file: ".node-version"
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm install -g npm && npm --version
+
+      - run: npm ci
+
+      - run: npm test
