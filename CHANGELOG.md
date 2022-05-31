@@ -22,7 +22,7 @@ Now we support multiples version format like
 - `## [vX.Y.Z`
 - `## [X.Y.Z`
 
-(This means no more code specific to https://keepachangelog.com & more flexibility)
+(This means no more code specific to <https://keepachangelog.com> & more flexibility)
 
 ## 1.3.2 - 2018-06-07
 
