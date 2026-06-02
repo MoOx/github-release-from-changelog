@@ -1,5 +1,19 @@
 # `github-release-from-changelog` Changelog
 
+## 3.0.0 - 2026-06-02
+
+⚠️ Breaking changes (CLI usage unchanged):
+
+- 🔒 Upgrade `grizzly` to `^6` to fix the `@octokit/*` ReDoS advisories
+- 💥 Now requires **Node.js >= 18** (`grizzly@6` is ESM-only)
+- 📦 The package is now an ES module (`"type": "module"`)
+
+Internal:
+
+- 🛠 Replace `prettier` + `pretty-quick` with `oxlint` + `oxfmt` (removes the
+  `cross-spawn`/`execa` advisories from the dev dependencies)
+- ⬆️ Upgrade `husky` to `^9` (hooks moved to the `.husky/` directory)
+
 ## 2.1.1 - 2020-02-18
 
 - Bump dependency triggering warning  
