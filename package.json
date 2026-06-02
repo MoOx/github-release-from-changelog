@@ -27,7 +27,7 @@
     "lint": "oxlint",
     "prepare": "husky",
     "test": "node github-release-from-changelog.js --dryRun",
-    "release": "npmpub --no-release --skip-test",
+    "release": "npx -y npmpub --no-release --skip-test",
     "postrelease": "node github-release-from-changelog.js"
   },
   "dependencies": {
@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "npmpub": "^5.0.0",
     "oxfmt": "^0.53.0",
     "oxlint": "^1.68.0"
   },
