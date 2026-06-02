@@ -1,25 +1,23 @@
-name: Build
+name: Test
 
 on: [push, pull_request]
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [lts/*, latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version-file: ".node-version"
-
-      - uses: actions/cache@v2
+          fetch-tags: true
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - run: npm install -g npm && npm --version
-
+          node-version: ${{ matrix.node-version }}
       - run: npm ci
-
       - run: npm test
