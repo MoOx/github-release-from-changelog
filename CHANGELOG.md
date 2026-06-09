@@ -1,5 +1,14 @@
 # `github-release-from-changelog` Changelog
 
+## Unreleased
+
+- 🐛 Report configuration errors as clean messages instead of Node
+  uncaught-exception dumps (errors were thrown as bare strings)
+- ✨ Accept the npm shorthand `repository` forms (`"user/repo"` and
+  `"github:user/repo"`) in addition to full GitHub urls; the
+  "Unable to parse repository url" message now shows the offending value and
+  the expected format
+
 ## 3.0.0 - 2026-06-02
 
 ⚠️ Breaking changes (CLI usage unchanged):
