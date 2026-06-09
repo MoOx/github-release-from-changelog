@@ -6,6 +6,13 @@ import process from "node:process";
 import minimist from "minimist";
 import grizzly from "grizzly";
 
+// Report a user-facing error without the uncaught-exception noise Node prints
+// for a bare `throw`, then exit with a failure code.
+function fail(message) {
+  console.error(message);
+  process.exit(1);
+}
+
 const changelogFileNames = [
   "CHANGELOG.md",
   "Changelog.md",
@@ -59,7 +66,7 @@ let pkg;
 try {
   pkg = JSON.parse(fs.readFileSync(process.cwd() + "/package.json", "utf8"));
 } catch {
-  throw "No package.json found in " + process.cwd();
+  fail("No package.json found in " + process.cwd());
 }
 
 // read changelog
@@ -69,22 +76,43 @@ try {
     encoding: "utf8",
   });
 } catch {
-  throw "No " + changelogFileName + " found in " + process.cwd();
+  fail("No " + changelogFileName + " found in " + process.cwd());
 }
 
-// parse repository url to get user & repo slug
+// parse the repository field to get the user & repo slug
+// supports full git/https/ssh GitHub urls as well as the npm shorthands
+// "user/repo" and "github:user/repo"
 let repoUrl = pkg.repository;
 if (repoUrl === undefined) {
-  throw "No repository.url found in " + process.cwd() + "/repository(.url)";
+  fail("No `repository` field found in " + process.cwd() + "/package.json");
 }
 if (typeof repoUrl === "object" && repoUrl.url) {
   repoUrl = repoUrl.url;
 }
-const matches = repoUrl.match(/(?:https?|git(?:\+ssh)?)(?::\/\/)(?:www\.)?github\.com\/(.*)/i);
-if (matches === null) {
-  throw "Unable to parse repository url";
+if (typeof repoUrl !== "string") {
+  fail("Unable to read the `repository` field in package.json");
 }
-const repoData = matches[1].split("/");
+
+// drop an optional npm host shorthand prefix, e.g. "github:user/repo"
+repoUrl = repoUrl.replace(/^github:/i, "");
+
+let slug;
+const urlMatches = repoUrl.match(/github\.com[/:]([^/]+\/[^/]+?)(?:\.git)?\/?$/i);
+if (urlMatches) {
+  slug = urlMatches[1];
+} else if (/^[^/]+\/[^/]+$/.test(repoUrl)) {
+  // npm shorthand: "user/repo"
+  slug = repoUrl;
+} else {
+  fail(
+    'Unable to parse repository url "' +
+      repoUrl +
+      '". Expected a GitHub url (e.g. "https://github.com/user/repo.git") ' +
+      'or the npm shorthand "user/repo".',
+  );
+}
+
+const repoData = slug.split("/");
 const user = repoData[0];
 const repo = repoData[1].replace(/\.git$/, "");
 
@@ -96,7 +124,7 @@ const tags = cp.execSync("git tag", { encoding: "utf8" });
 const tagMatches = tags.match(new RegExp("^(v?)" + version + "$", "gm"));
 let tagName;
 if (tagMatches === null) {
-  throw "Tag " + version + " or v" + version + " not found";
+  fail("Tag " + version + " or v" + version + " not found");
 } else {
   tagName = tagMatches[0];
 }
@@ -155,7 +183,7 @@ if (argv.dryRun) {
 } else {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
-    throw "GITHUB_TOKEN required";
+    fail("GITHUB_TOKEN required");
   }
 
   grizzly(token, releaseOptions).then(
